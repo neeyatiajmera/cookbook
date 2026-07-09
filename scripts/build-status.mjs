@@ -33,8 +33,13 @@ const [webhook, redis, commits, ci, deploys, pages] = await Promise.all([
     .map((c) => ({ m: c.commit.message.split("\n")[0], d: c.commit.committer?.date, u: c.html_url }))),
   safe(async () => (await j(`https://api.github.com/repos/${CB}/actions/workflows/validate-and-deploy.yml/runs?per_page=3`, ghH))
     .workflow_runs.map((r) => ({ s: r.status, c: r.conclusion, d: r.created_at, u: r.html_url }))),
-  safe(async () => (await j(`https://api.github.com/repos/${APP}/actions/workflows/deploy.yml/runs?per_page=2`, ghH))
-    .workflow_runs.map((r) => ({ s: r.status, c: r.conclusion, d: r.created_at, u: r.html_url, ev: r.event }))),
+  safe(async () => {
+    const u = process.env.WORKER_URL;
+    if (!u) throw new Error("worker not deployed yet");
+    const r = await fetch(u, { signal: AbortSignal.timeout(8000) }).then((x) => x.json());
+    if (!r.ok) throw new Error("worker replied not-ok");
+    return { url: u, service: r.service };
+  }),
   safe(async () => (await j(`https://api.github.com/repos/${CB}/actions/workflows/pages.yml/runs?per_page=5`, ghH))
     .workflow_runs.filter((r) => String(r.id) !== String(process.env.GITHUB_RUN_ID || ""))
     .slice(0, 3).map((r) => ({ s: r.status, c: r.conclusion, d: r.created_at, u: r.html_url }))),
@@ -95,10 +100,9 @@ ${stage(5, "Website publish (GitHub Pages)", pages.ok && pages.d[0] ? runDot(pag
   ? `<ul>${pages.d.map((r) => `<li>${dot(runDot(r))} <a href="${r.u}">${rel(r.d)} — ${r.s}${r.c ? " / " + r.c : ""}</a></li>`).join("")}</ul>`
   : `<p class="err">${esc(pages.e)}</p>`)}
 
-${stage(6, "Vercel deploys (bot host — parked)", deploys.ok && deploys.d[0] && deploys.d[0].c === "success" ? "ok" : "unknown", deploys.ok
-  ? `<ul>${deploys.d.map((r) => `<li>${dot(runDot(r))} <a href="${r.u}">${rel(r.d)} — via ${r.ev} — ${r.s}${r.c ? " / " + r.c : ""}</a></li>`).join("")}</ul>
-     <p class="faded">Parked until the Vercel account is verified — the bot keeps running on its last healthy deployment, and this lane does not affect publishing. Gray here is normal.</p>`
-  : `<p class="err">${esc(deploys.e)}</p>`)}
+${stage(6, "Bot host (Cloudflare Worker)", deploys.ok ? "ok" : "fail", deploys.ok
+  ? `<ul><li>Live at <code>${esc(deploys.d.url)}</code></li><li>Health check: <b>ok</b></li></ul>`
+  : `<p class="err">${esc(deploys.e)} — the bot will not answer until this is green.</p>`)}
 
 <div class="legend"><b style="color:var(--ink)">Reading this page</b><br>
 This page is rebuilt with the site, so if you can see a fresh timestamp above, stages 3→5 just ran. 🟢 1+2 green = the bot will answer and Save will work. 🔴 stage 1 with a delivery error = Telegram can’t reach the bot. 🟡 anywhere = something’s in flight; click through to the run.
