@@ -35,8 +35,9 @@ const [webhook, redis, commits, ci, deploys, pages] = await Promise.all([
     .workflow_runs.map((r) => ({ s: r.status, c: r.conclusion, d: r.created_at, u: r.html_url }))),
   safe(async () => (await j(`https://api.github.com/repos/${APP}/actions/workflows/deploy.yml/runs?per_page=2`, ghH))
     .workflow_runs.map((r) => ({ s: r.status, c: r.conclusion, d: r.created_at, u: r.html_url, ev: r.event }))),
-  safe(async () => (await j(`https://api.github.com/repos/${CB}/actions/workflows/pages.yml/runs?per_page=3`, ghH))
-    .workflow_runs.map((r) => ({ s: r.status, c: r.conclusion, d: r.created_at, u: r.html_url }))),
+  safe(async () => (await j(`https://api.github.com/repos/${CB}/actions/workflows/pages.yml/runs?per_page=5`, ghH))
+    .workflow_runs.filter((r) => String(r.id) !== String(process.env.GITHUB_RUN_ID || ""))
+    .slice(0, 3).map((r) => ({ s: r.status, c: r.conclusion, d: r.created_at, u: r.html_url }))),
 ]);
 
 const rel = (iso) => {
@@ -94,9 +95,9 @@ ${stage(5, "Website publish (GitHub Pages)", pages.ok && pages.d[0] ? runDot(pag
   ? `<ul>${pages.d.map((r) => `<li>${dot(runDot(r))} <a href="${r.u}">${rel(r.d)} — ${r.s}${r.c ? " / " + r.c : ""}</a></li>`).join("")}</ul>`
   : `<p class="err">${esc(pages.e)}</p>`)}
 
-${stage(6, "Vercel deploys (bot host — currently seat-blocked)", deploys.ok && deploys.d[0] ? runDot(deploys.d[0]) : "unknown", deploys.ok
+${stage(6, "Vercel deploys (bot host — parked)", deploys.ok && deploys.d[0] && deploys.d[0].c === "success" ? "ok" : "unknown", deploys.ok
   ? `<ul>${deploys.d.map((r) => `<li>${dot(runDot(r))} <a href="${r.u}">${rel(r.d)} — via ${r.ev} — ${r.s}${r.c ? " / " + r.c : ""}</a></li>`).join("")}</ul>
-     <p class="faded">The bot runs on the last healthy Vercel deployment; the website now publishes via stage 5 instead.</p>`
+     <p class="faded">Parked until the Vercel account is verified — the bot keeps running on its last healthy deployment, and this lane does not affect publishing. Gray here is normal.</p>`
   : `<p class="err">${esc(deploys.e)}</p>`)}
 
 <div class="legend"><b style="color:var(--ink)">Reading this page</b><br>
