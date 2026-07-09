@@ -1,4 +1,4 @@
-name: Validate & Deploy
+name: Validate recipes
 on:
   push:
     branches: [main]
@@ -12,14 +12,3 @@ jobs:
         with: { node-version: 20 }
       - run: npm install ajv yaml --no-save
       - run: node scripts/validate.mjs
-  deploy:
-    needs: validate
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger website rebuild
-        run: |
-          curl -s -X POST "https://api.github.com/repos/neeyatiajmera/cookgit-app/dispatches" \
-            -H "Authorization: Bearer ${{ secrets.DISPATCH_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            -d '{"event_type":"content-updated"}' && echo "Rebuild dispatched"
