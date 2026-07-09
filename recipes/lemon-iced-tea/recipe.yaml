@@ -1,0 +1,41 @@
+id: lemon-iced-tea
+title: Lemon Iced Tea
+servings: 4
+description: Refreshing homemade iced tea with fresh lemon juice and mint
+
+ingredients:
+  - item: black tea bags
+    quantity: 4
+    unit: piece
+  - item: water
+    quantity: 1
+    unit: l
+  - item: lemons, juiced
+    quantity: 2
+    unit: piece
+  - item: sugar
+    quantity: 3
+    unit: tbsp
+  - item: ice cubes
+    note: for serving
+  - item: fresh mint
+    note: for serving
+
+steps:
+  - Bring the water to a boil and add the tea bags
+  - Steep for 5 minutes, then remove the tea bags
+  - Add the sugar while the tea is still hot and stir until completely dissolved
+  - Allow the tea to cool to room temperature
+  - Stir in the fresh lemon juice
+  - Fill glasses with ice cubes and pour the lemon tea over the ice
+  - Garnish with fresh mint leaves and serve immediately
+
+time:
+  prep_minutes: 5
+  cook_minutes: 5
+
+tags:
+  - beverage
+  - summer
+  - refreshing
+  - non-alcoholic
