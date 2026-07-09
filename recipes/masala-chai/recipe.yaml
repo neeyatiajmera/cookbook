@@ -1,0 +1,49 @@
+id: masala-chai
+title: Masala Chai
+servings: 2
+time:
+  prep_minutes: 5
+  cook_minutes: 10
+ingredients:
+  - item: water
+    quantity: 1.5
+    unit: cup
+  - item: whole milk (preferably full-fat)
+    quantity: 1
+    unit: cup
+  - item: black tea powder (preferably Assam CTC tea)
+    quantity: 3
+    unit: tsp
+  - item: sugar
+    quantity: 3
+    unit: tsp
+    note: adjust to taste
+  - item: fresh ginger, grated or crushed
+    quantity: 1
+    unit: piece
+    note: 1-inch piece
+  - item: green cardamom pods
+    quantity: 3
+    unit: piece
+  - item: cinnamon stick
+    quantity: 0.5
+    unit: stick
+  - item: whole cloves
+    quantity: 2
+    unit: piece
+  - item: black peppercorns
+    quantity: 2
+    unit: piece
+    note: optional, for extra warmth
+steps:
+  - Place the cardamom, cinnamon, cloves, and peppercorns into a mortar and pestle and crush them coarsely.
+  - In a small saucepan, bring the water to a boil over medium-high heat. Add the crushed spices and the fresh ginger. Let it boil for 2 to 3 minutes to infuse the water.
+  - Stir in the black tea leaves and sugar. Let the mixture boil for another 1 to 2 minutes until the liquid turns a deep maroon-brown.
+  - Add the whole milk into the saucepan. Bring the tea back up to a rolling boil.
+  - Once the milk bubbles and begins to rise up, lower the heat slightly. Let it simmer for 3 to 4 minutes, stirring occasionally, until the color deepens to a rich creamy brown.
+  - Turn off the heat. Pour the masala chai through a fine mesh strainer directly into your serving cups. Serve immediately while hot.
+tags:
+  - indian
+  - beverage
+  - tea
+  - spiced
