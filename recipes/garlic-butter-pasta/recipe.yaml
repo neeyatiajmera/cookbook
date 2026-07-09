@@ -1,0 +1,36 @@
+id: garlic-butter-pasta
+title: Garlic Butter Pasta
+servings: 2
+time:
+  prep_minutes: 5
+  cook_minutes: 10
+ingredients:
+  - item: spaghetti
+    quantity: 200
+    unit: g
+  - item: butter
+    quantity: 60
+    unit: g
+  - item: garlic cloves, thinly sliced
+    quantity: 4
+    unit: clove
+  - item: chili flakes
+    unit: pinch
+  - item: parmesan, grated
+    quantity: 30
+    unit: g
+  - item: fresh parsley, chopped
+  - item: pasta water
+    note: for tossing
+steps:
+  - Cook spaghetti in salted boiling water according to package directions until al dente. Reserve a cup of pasta water before draining.
+  - While pasta cooks, melt butter in a large pan over medium-low heat.
+  - Add sliced garlic and chili flakes to the butter. Cook gently for 2-3 minutes until garlic softens and becomes fragrant but not browned.
+  - Add drained pasta to the pan with garlic butter. Toss together, adding a splash of reserved pasta water to create a silky coating.
+  - Remove from heat and stir in grated parmesan until melted.
+  - Garnish with chopped parsley and serve immediately.
+tags:
+  - pasta
+  - italian
+  - quick
+  - weeknight
