@@ -1,0 +1,75 @@
+name: Publish website (GitHub Pages)
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"   # keep the status dashboard fresh
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: neeyatiajmera/cookgit-app
+          token: ${{ secrets.DISPATCH_TOKEN }}
+          path: app
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Static export build
+        env:
+          CONTENT_GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+          GITHUB_REPO: neeyatiajmera/cookbook
+          NEXT_PUBLIC_SITE_URL: https://neeyatiajmera.github.io/cookbook
+        run: |
+          cd app
+          # Pages is static-only: drop server routes, enable export under /cookbook
+          rm -rf app/api app/status
+          cat > next.config.mjs <<'CFG'
+          /** @type {import('next').NextConfig} */
+          export default {
+            output: "export",
+            basePath: "/cookbook",
+            images: { unoptimized: true },
+            optimizeFonts: false,
+          };
+          CFG
+          npm ci --silent || npm install --silent
+          npm run build
+          touch out/.nojekyll
+      - name: Build status dashboard
+        env:
+          CONTENT_GITHUB_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_ID: ${{ secrets.TELEGRAM_OWNER_ID }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+        run: |
+          mkdir -p app/out/status
+          node scripts/build-status.mjs app/out/status/index.html
+      - name: Smoke-check export
+        run: |
+          test -f app/out/index.html
+          test -f app/out/recipes/garlic-butter-pasta/index.html
+          test -f app/out/recipes/masala-chai/index.html
+          test -f app/out/status/index.html
+          echo "export contains all recipes ✓"
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: app/out }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
