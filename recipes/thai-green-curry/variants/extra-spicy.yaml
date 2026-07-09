@@ -1,0 +1,30 @@
+variant_of: thai-green-curry
+id: thai-green-curry-extra-spicy
+title: Extra-Spicy Green Curry
+reason: Wanted more heat for a dinner party.
+changes:
+  - "+2 fresh bird's-eye chilies, sliced"
+  - "Roast the paste 2 minutes longer for a darker base"
+description: The same curry with real heat — sliced bird's-eye chilies and a longer-toasted paste.
+servings: 4
+time:
+  prep_minutes: 20
+  cook_minutes: 27
+tags: [thai, curry, dinner, spicy]
+ingredients:
+  - { item: green curry paste, quantity: 3, unit: tbsp }
+  - { item: bird's-eye chilies, quantity: 2, unit: piece, note: thinly sliced }
+  - { item: coconut milk, quantity: 400, unit: ml, note: full-fat }
+  - { item: chicken thigh, quantity: 500, unit: g, note: "boneless, cut into chunks" }
+  - { item: sugar snap peas, quantity: 150, unit: g }
+  - { item: fish sauce, quantity: 1, unit: tbsp }
+  - { item: brown sugar, quantity: 1, unit: tsp }
+  - { item: thai basil leaves, quantity: 1, unit: bunch }
+  - { item: jasmine rice, quantity: 300, unit: g, note: to serve }
+steps:
+  - Fry the curry paste with the sliced chilies in a little oil over medium heat until deeply fragrant, about 3 minutes.
+  - Pour in a third of the coconut milk and simmer until the oil starts to separate, 3–4 minutes.
+  - Add the chicken and stir to coat, then pour in the remaining coconut milk.
+  - Simmer gently until the chicken is cooked through, about 15 minutes.
+  - Stir in the snap peas, fish sauce, and sugar; cook 2 more minutes.
+  - Off the heat, fold in the basil. Serve over jasmine rice.

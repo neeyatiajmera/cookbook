@@ -1,0 +1,25 @@
+id: roast-chicken
+title: Sunday Roast Chicken
+description: A simple, deeply bronzed roast chicken — dry-brined, high heat, crackly skin, juicy everywhere.
+servings: 4
+time:
+  prep_minutes: 10
+  cook_minutes: 60
+tags: [chicken, roast, sunday, classic]
+ingredients:
+  - { item: whole chicken, quantity: 1.6, unit: kg }
+  - { item: flaky salt, quantity: 1, unit: tbsp }
+  - { item: black pepper, quantity: 1, unit: tsp, note: freshly ground }
+  - { item: unsalted butter, quantity: 30, unit: g, note: softened }
+  - { item: garlic, quantity: 4, unit: clove, note: smashed }
+  - { item: thyme, quantity: 4, unit: sprig }
+steps:
+  - Pat the chicken very dry. Salt it all over and refrigerate, uncovered, for at least 1 hour (overnight is better).
+  - Heat the oven to 220°C / 425°F.
+  - Rub the skin with butter, grind over the pepper, and tuck the garlic and thyme into the cavity.
+  - Roast breast-side up for 50–60 minutes, until the juices run clear and the skin is deep golden.
+  - Rest for 15 minutes before carving. Do not skip the rest.
+notes: The dry, uncovered fridge time is the whole secret to crackly skin.
+tips:
+  - Save the carcass for stock — it freezes well.
+source: Sample recipe — replace with your own!
