@@ -33,15 +33,16 @@ jobs:
           cd app
           # Pages is static-only: drop server routes, enable export under /cookbook
           rm -rf app/api app/status
-          cat > next.config.mjs <<'CFG'
-          /** @type {import('next').NextConfig} */
-          export default {
-            output: "export",
-            basePath: "/cookbook",
-            images: { unoptimized: true },
-            optimizeFonts: false,
-          };
-          CFG
+          printf '%s\n' \
+            '/** @type {import("next").NextConfig} */' \
+            'export default {' \
+            '  output: "export",' \
+            '  basePath: "/cookbook",' \
+            '  trailingSlash: true,' \
+            '  images: { unoptimized: true },' \
+            '  optimizeFonts: false,' \
+            '};' > next.config.mjs
+          cat next.config.mjs
           npm ci --silent || npm install --silent
           npm run build
           touch out/.nojekyll
