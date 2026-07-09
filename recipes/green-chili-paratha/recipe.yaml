@@ -1,0 +1,25 @@
+id: green-chili-paratha
+title: Green Chili Paratha
+description: Spicy layered Indian flatbread stuffed with green chilies, ajwain, and aromatic spices, cooked to golden perfection with ghee
+servings: 4
+ingredients:
+  - item: Wheat Flour Dough
+  - item: Ghee
+  - item: Red Chilli Powder
+  - item: Ajwain (Carom Seeds)
+  - item: Green Chillies, chopped
+  - item: Salt
+steps:
+  - Take a portion of wheat flour dough and roll it into a flat circle.
+  - Brush one side with ghee and sprinkle ajwain, salt, red chilli powder, and chopped green chillies evenly.
+  - Fold the dough into pleats and shape it into a round ball. Dust with flour and roll out into a thick paratha.
+  - Heat a flat pan over medium heat and place the paratha on it. Cook from both sides until golden brown spots appear.
+  - Add ghee to the paratha and roast until light golden. Serve hot with Aloo Beans Sabji or any curry of your choice.
+time:
+  prep_minutes: 15
+  cook_minutes: 15
+tags:
+  - indian
+  - bread
+  - vegetarian
+  - spicy
