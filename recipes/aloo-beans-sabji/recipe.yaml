@@ -1,0 +1,67 @@
+id: aloo-beans-sabji
+title: Aloo Beans Sabji
+description: A flavorful Indian dry vegetable curry made with potatoes and French beans, tempered with cumin and aromatic spices
+servings: 4
+ingredients:
+  - item: Potatoes, peeled and diced
+    quantity: 4
+    unit: piece
+  - item: Oil
+    quantity: 1
+    unit: tbsp
+  - item: Jeera (Cumin Seeds)
+    quantity: 1
+    unit: tsp
+  - item: Dry Red Chillies
+    quantity: 2
+    unit: piece
+  - item: Chopped Garlic
+    quantity: 1
+    unit: tbsp
+  - item: Hing (Asafoetida)
+    quantity: 1
+    unit: tsp
+  - item: Salt
+    quantity: 1
+    unit: tsp
+  - item: Turmeric Powder
+    quantity: 1
+    unit: tsp
+  - item: French Beans, chopped
+    quantity: 1
+    unit: cup
+  - item: Coriander Powder
+    quantity: 1
+    unit: tsp
+  - item: Jeera Powder (Cumin Powder)
+    quantity: 1
+    unit: tsp
+  - item: Garam Masala
+    quantity: 0.5
+    unit: tsp
+  - item: Red Chilli Powder
+    quantity: 0.5
+    unit: tsp
+  - item: Water
+    note: splash
+  - item: Chopped Coriander
+    quantity: 1
+    unit: tbsp
+steps:
+  - Heat oil in a pan over medium heat. Add jeera (cumin seeds) and dry red chillies. Allow them to splutter.
+  - Add chopped garlic and hing (asafoetida). Sauté until the garlic turns golden brown.
+  - Add diced potatoes to the pan. Mix well with the tempered oil and spices. Cook for 5-6 minutes.
+  - Cover the pan with a lid and let the potatoes cook for another 5-6 minutes until they are partially cooked.
+  - Add French beans to the pan. Mix gently with the partially cooked potatoes.
+  - Add coriander powder, jeera powder, garam masala, and red chilli powder. Stir well to coat the vegetables evenly.
+  - Sprinkle some water over the vegetables. Cover the pan and let the sabzi simmer for 4-5 minutes until the beans are cooked.
+  - Once the beans are tender, add chopped coriander. Mix well. Serve hot with paratha or roti.
+time:
+  prep_minutes: 10
+  cook_minutes: 25
+tags:
+  - indian
+  - vegetarian
+  - vegan
+  - side-dish
+  - curry
